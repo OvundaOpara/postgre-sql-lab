@@ -2,6 +2,7 @@ plugins {
     kotlin("jvm") version "1.9.23"
     kotlin("plugin.serialization") version "1.9.23"
     application
+    jacoco
 }
 
 group = "com.example"
@@ -28,8 +29,19 @@ dependencies {
     implementation("com.zaxxer:HikariCP:5.1.0")
 
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+
+    testImplementation("io.ktor:ktor-server-test-host:2.3.7")
+    testImplementation("io.mockk:mockk:1.13.9")
+    testImplementation(kotlin("test"))
 }
 
 application {
     mainClass.set("com.example.ApplicationKt")
+}
+
+tasks.jacocoTestReport {
+    reports {
+        xml.required.set(true)
+        html.required.set(true)
+    }
 }
