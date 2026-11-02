@@ -36,6 +36,11 @@ dependencies {
     implementation("com.auth0:java-jwt:4.4.0")
     implementation("org.mindrot:jbcrypt:0.4")
 
+    //  Caching Dependencies
+    implementation("com.github.ben-manes.caffeine:caffeine:3.1.8")
+
+    //  Additional Dependencies
+
     testImplementation("io.ktor:ktor-server-test-host:2.3.7")
     testImplementation("io.mockk:mockk:1.13.9")
     testImplementation(kotlin("test"))
