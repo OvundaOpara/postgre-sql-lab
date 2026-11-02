@@ -30,6 +30,11 @@ dependencies {
 
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
 
+    implementation("io.ktor:ktor-server-auth:2.3.7")
+    implementation("io.ktor:ktor-server-auth-jwt:2.3.7")
+    implementation("com.auth0:java-jwt:4.4.0")
+    implementation("org.mindrot:jbcrypt:0.4")
+
     testImplementation("io.ktor:ktor-server-test-host:2.3.7")
     testImplementation("io.mockk:mockk:1.13.9")
     testImplementation(kotlin("test"))
