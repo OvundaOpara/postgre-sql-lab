@@ -1,5 +1,7 @@
 package com.example
 
+import com.example.concurrent.DashboardService
+import com.example.concurrent.dashboardRoutes
 import com.example.database.DatabaseFactory
 import com.example.repositories.PostgresTaskRepository
 import com.example.routes.TaskService
@@ -15,12 +17,14 @@ fun main() {
     DatabaseFactory.init()
 
     val repository = PostgresTaskRepository()
-    val service = TaskService(repository)
+    val taskService = TaskService(repository)
+    val dashboardService = DashboardService() // Initialize the concurrent service
 
     embeddedServer(Netty, port = 8080, host = "0.0.0.0") {
         install(ContentNegotiation) { json() }
         routing {
-            taskRoutes(service)
+            taskRoutes(taskService)
+            dashboardRoutes(dashboardService) // Register the concurrent endpoints
         }
     }.start(wait = true)
 }
